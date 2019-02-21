@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DriverActivity"
+    android:background="#9b9797"
+    >
+    <com.amap.api.maps.MapView
+        android:id="@+id/driver_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.amap.api.maps.MapView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/btn_bg_2"
+        android:padding="5dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        >
+        <Button
+            android:id="@+id/driver_btn_info"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_style_userinfo"
+            android:layout_centerVertical="true"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/driver_btn_info"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            >
+            <TextView
+                android:id="@+id/weather_cityName"
+                android:textSize="20sp"
+                android:text="地点"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                />
+            <TextView
+                android:id="@+id/weather_temp"
+                android:textSize="20sp"
+                android:text="气温"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                />
+            <TextView
+                android:id="@+id/weather_now"
+                android:textSize="20sp"
+                android:text="天气"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+    <Button
+        android:id="@+id/driver_btn_start"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_style_1"
+        android:text="查询路径"
+        android:textColor="#fff"
+        android:layout_centerHorizontal="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/driver_location_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_bg_3"
+        android:layout_marginLeft="15dp"
+        android:gravity="center"
+        android:padding="3dp"
+        >
+        <Button
+            android:id="@+id/driver_location"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_my_location"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

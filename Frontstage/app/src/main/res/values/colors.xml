@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4287fe</color>
+    <color name="colorPrimaryDark">#3973d9</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black_overlay">#66000000</color>
+
+
+    <color name="drive_route_1">#94e6ff00</color>
+    <color name="drive_route_2">#940dff00</color>
+    <color name="drive_route_3">#9400ffc4</color>
+    <color name="drive_route_4">#94003cff</color>
+</resources>

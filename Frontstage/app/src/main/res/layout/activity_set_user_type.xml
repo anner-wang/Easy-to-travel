@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp">
+        <Util.RoundImageView
+            android:layout_marginLeft="30dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/driver"
+            />
+        <Util.RoundImageView
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/passenger"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="357dp">
+
+        <Button
+            android:id="@+id/set_user_driver"
+            android:layout_marginLeft="30dp"
+
+
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+
+            android:background="@drawable/bt_set_user_type_driver"
+            android:textColor="#FFFEFE"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="我是司机"
+            android:layout_marginBottom="2dp"
+            />
+
+        <Button
+            android:id="@+id/set_user_passenger"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+
+            android:background="@drawable/bt_set_user_type_passenger"
+            android:textColor="#FFFEFE"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="我是乘客"
+            android:layout_marginBottom="2dp"
+            />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

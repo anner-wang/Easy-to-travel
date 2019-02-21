@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pic_blur">
+
+    <!-- 显示logo -->
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/pic_taxieasy"
+        />
+
+    <!-- 用户名，密码，确认密码 -->
+
+    <EditText
+        android:background="@drawable/edit_bg"
+        android:hint="用户名"
+        android:id="@+id/register_id"
+        android:textColorHint="#636567"
+        android:textColor="#1F2429"
+        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="219dp"
+        android:digits="0123456789"/>
+
+    <EditText
+        android:background="@drawable/edit_bg"
+
+        android:hint="密码"
+        android:id="@+id/register_password"
+        android:textColorHint="#636567"
+        android:textColor="#1F2429"
+        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="285dp"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:background="@drawable/edit_bg"
+        android:hint="确认密码"
+        android:id="@+id/register_confirmPassword"
+        android:textColorHint="#636567"
+        android:textColor="#1F2429"
+        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="351dp"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/register_register"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="417dp"
+        android:background="@drawable/bt_shape_green"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:text="注册" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/register_id"
+        android:layout_marginTop="472dp"
+        android:textColor="#d9d9d9"
+        android:text="同意用户注册协议" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

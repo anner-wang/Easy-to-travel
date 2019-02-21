@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pic_blur"
+    android:theme="@style/Theme.AppCompat.NoActionBar">
+
+    <!-- 用户名，密码 -->
+    <ImageView
+        android:id="@+id/driver_infor_logo2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/pic_taxieasy" />
+
+    <EditText
+        android:background="@drawable/edit_bg"
+        android:hint="用户名"
+        android:id="@+id/login_id"
+        android:textColorHint="#636567"
+        android:textColor="#1F2429"
+        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="265dp"
+        android:inputType="number"/>
+
+    <EditText
+        android:background="@drawable/edit_bg"
+        android:hint="密码"
+        android:id="@+id/login_password"
+        android:textColorHint="#636567"
+        android:textColor="#1F2429"
+        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="331dp"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/login_login"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="397dp"
+        android:radius="4dp"
+        android:background="@drawable/bt_shape_green"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:text="登录" />
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="460dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/register_text">
+        <TextView
+            android:visibility="invisible"
+            android:clickable="true"
+            android:id="@+id/forgetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="#d9d9d9"
+            android:text="忘记密码"/>
+        <TextView
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="#d9d9d9"
+            android:layout_marginLeft="5dp"
+            android:text="注册"
+            android:topLeftRadius="8dp"
+            android:topRightRadius="8dp"
+            android:bottomLeftRadius="8dp"
+            android:bottomRightRadius="8dp"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>
