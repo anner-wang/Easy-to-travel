@@ -1,6 +1,6 @@
 ## 易搭行-基于大数据的空载出租车巡游路径推荐
 
-![](resource/demp.jpg)  
+![](resource/demo.jpg)  
 
 目录介绍:
 
