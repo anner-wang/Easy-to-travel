@@ -40,6 +40,6 @@ if __name__ == '__main__':
     for i in result:
         try:
             run(i,region)
-        except Exception:
-            print(Exception)
+        except Exception as e:
+            print('reason',e)
     
