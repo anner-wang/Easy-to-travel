@@ -1,19 +1,13 @@
----
-date: 2019-01-26 06:11
-status: public
-title: README
----
+## 易搭行-基于大数据的空载出租车巡游路径推荐
 
-# 易搭行APP
+![](resource/demp.jpg)  
 
-![](welcome.jpg)
+目录介绍:
 
-app设计目标：为空载出租车司机提供最佳的巡游路径  
-
-后台框架：spring boot  
-
-前端开发：安卓app开发  
-
-最佳路径预测：GAN对抗神经网络生成过去一个月的大数据分析结果
-
-
+* 前端app 代码 ---Frontstage
+* 路径规划后台代码---Frontstage
+* 数据获取代码---create_data
+* 数据预处理代码---process_data
+* 数据预测代码---predice_data
+* 项目静态资源---resource
+* 项目应用和意义---note
