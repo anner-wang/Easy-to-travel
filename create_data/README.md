@@ -8,8 +8,8 @@
 
 建议执行方式:
 
-* windows: run.bat
-* linux: sh run.bar
+* `windows: run.bat`
+* `linux: sh run.sh`
 
 执行结果:
 
