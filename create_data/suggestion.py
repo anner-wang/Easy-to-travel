@@ -32,14 +32,21 @@ if __name__ == '__main__':
     region=args.region
     url='http://api.map.baidu.com/place/v2/suggestion'
     filename='result.csv'
-    f=open(filename,'r')
-    reader=csv.reader(f)
-    result=set([ d[0][:2] for d in reader ][1:])
-    print(result)
-    f.close()
-    for i in result:
-        try:
-            run(i,region)
-        except Exception as e:
-            print('reason',e)
+    temp=set()
+    # 开始补充
+    while True:
+        f=open(filename,'r')
+        reader=csv.reader(f)
+        result=set([ d[0][-1] for d in reader ][1:])
+        result=result-temp
+        temp=temp|result
+        print(result)
+        if (len(result)==0):
+            break
+        f.close()
+        for i in result:
+            try:
+                run(i,region)
+            except Exception as e:
+                print('reason',e)
     

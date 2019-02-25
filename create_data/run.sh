@@ -1,9 +1,7 @@
 #! /bin/bash
-echo -n "ak="
-read ak
 file="result.csv"
 if [ -x "$file" ];then
 echo file not exist
-python location.py --ak=$ak
+python location.py
 fi
-python suggestion.py --ak=$ak
+python suggestion.py
