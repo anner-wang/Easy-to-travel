@@ -4,10 +4,17 @@
 
 目录介绍:
 
-* 前端app 代码 ---Frontstage
-* 路径规划后台代码---Frontstage
-* 数据获取代码---create_data
-* 数据预处理代码---process_data
-* 数据预测代码---predice_data
-* 项目静态资源---resource
-* 项目应用和意义---note
+* **前端app代码** ---Frontstage  
+
+* **路径规划后台代码**---Frontstage  
+
+* **数据创建代码**---create_data  
+
+* 数据预处理代码---process_data  
+
+* 数据预测代码---predict_data  
+
+* 项目静态资源---resource  
+
+* 项目应用和意义---note  
+
