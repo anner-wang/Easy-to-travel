@@ -14,19 +14,35 @@ if __name__ == '__main__':
     filename='result.csv'
     with open(filename,'r') as f:
         reader=csv.reader(f)
-        data=list(reader)
-        for t in range(288):
-             # 创建文件
-            file=open('data/%d.csv'%t,'w',newline='')
-            writer=csv.writer(file)
-            for line in data:
-                if flag:
-                    new_line=line+['time','number']
-                    flag=False
-                else:
-                    new_line=line+[t*60*5,random.randint(0,100)]
-                writer.writerow(new_line)
-                print(new_line)
-            flag=True
-            file.close()
-            print('文件%d.csv创建结束'%t)
+        # 主循环
+        for place in reader:
+            print(place)
+            if place[3]=='uid':
+                continue
+            # 创建地点的第一天csv文件
+            index=1
+            lines=[]
+            filename='data/'+place[1]+'-'+place[2]
+            # 创建文件夹
+            if not os.path.exists(filename):
+                os.makedirs(filename)
+                name=filename+'/'+str(index)+'.csv'
+                file=open(name,'w',newline='')
+                writer=csv.writer(file)
+                for i in range(288):
+                    line=[i,random.randint(1,100)]
+                    lines.append(line)
+                    writer.writerow(line)
+                file.close()
+            # 按照第一个文件的值，存储后面的csv文件
+            index+=1
+            for i in range(364):
+                file=open(filename+'/'+str(index)+'.csv','w',newline='')
+                index+=1
+                writer=csv.writer(file)
+                for line in lines:
+                    writer.writerow([line[0],line[1]+random.randint(1,10)])
+                file.close()
+
+
+        
