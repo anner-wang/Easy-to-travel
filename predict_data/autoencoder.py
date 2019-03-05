@@ -61,4 +61,12 @@ class AddittiveGaussianNoiseAutoencoder(object):
     # 获取隐藏层偏置的接口
     def getBiases(self):
         return self.sess.run(self.weights['b1'])
+    # 保存权重参数
+    def save_weights(self,path):
+        tf.train.Saver().save(self.sess,save_path='path/anner',meta_graph_suffix='2019-3-5')
+        print('weights file saved to data/')
+    # 加载权重文件,返回预测结果
+    def load_weights_predict_X(self,X,filename):
+        tf.train.Saver().restore(self.sess,tf.train.latest_checkpoint('weights/'+filename+'/'))
+        return self.recontruct(X)
 
