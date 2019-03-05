@@ -17,9 +17,9 @@
 
 ![](image/predict_data.png)
 
-[训练数据，各个地点的训练参数，预测数据验证 网盘链接](https://pan.baidu.com/s/1-YsE_WGPJF6FSUeZw2cPGQ)
-提取码：bwup 
-**注意解压**
+[训练数据，各个地点的训练参数，预测数据验证 网盘链接](https://pan.baidu.com/s/18qgLIuDR4M_06vf3XYRZjg )
+提取码：7ddy   
+**注意解压**  
 
 目录结构截图
 
