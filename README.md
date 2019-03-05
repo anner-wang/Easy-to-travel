@@ -6,7 +6,7 @@ title: README
 
 # 易搭行APP
 
-![](welcome.jpg)
+![](resource/demo.jpg)
 
 app设计目标：为空载出租车司机提供最佳的巡游路径  
 
