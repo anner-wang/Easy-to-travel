@@ -2,6 +2,7 @@ import tensorflow as tf
 import numpy as np
 import csv
 import argparse
+import os
 import sklearn.preprocessing as prep
 from tensorflow.examples.tutorials.mnist import input_data
 from autoencoder import AddittiveGaussianNoiseAutoencoder
@@ -21,18 +22,23 @@ if __name__ == '__main__':
     # 加载训练地点
     parser=argparse.ArgumentParser()
     parser.add_argument('--location',required=True,help='longitude-latitude.csv')
+    parser.add_argument('--overwrite',required=False,default=True,help='longitude-latitude.csv')
     args=parser.parse_args()
     filename=args.location
+    overwrite=args.overwrite
 
+    if not overwrite and os.path.exists('weights/'+filename):
+        print('pass')
+        exit(1)
 
     # 加载自己的数据集到内存
     X_train = None
-    with open('data/train_data/'+filename, 'r') as file:
+    with open('data/train_data/'+filename+'.csv', 'r') as file:
         reader = csv.reader(file)
         X_train = np.array(list(reader))
     # 初始化训练必须参数
     n_samples = int(X_train.shape[0])
-    training_epoch = 20
+    training_epoch = 50
     batch_size = 128
     display_step = 1
     save_weights_step=5
@@ -52,5 +58,5 @@ if __name__ == '__main__':
         if epoch % display_step == 0:
             print('Epoch:', '%04d' % (epoch + 1), 'cost=', '{:.9f}'.format(avg_cost))
         if epoch%save_weights_step==0 and epoch>0:
-            autoencoder.save_weights('weights/'+filename)
+            autoencoder.save_weights(filename)
 
