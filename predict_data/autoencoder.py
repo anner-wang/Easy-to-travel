@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import sklearn.preprocessing as prep
 import os
-from tensorflow.examples.tutorials.mnist import input_data
+
 
 def xavier_init(fan_in,fan_out,constant=1):
     low=-constant*np.sqrt(6.0/(fan_in+fan_out))

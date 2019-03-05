@@ -4,7 +4,6 @@ import csv
 import argparse
 import os
 import sklearn.preprocessing as prep
-from tensorflow.examples.tutorials.mnist import input_data
 from autoencoder import AddittiveGaussianNoiseAutoencoder
 
 # 预处理数据
