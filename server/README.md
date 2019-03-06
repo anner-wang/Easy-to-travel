@@ -33,6 +33,18 @@
 
 ![](output.png)
 
+## 文件介绍
+
+* autoencoder.py  自动编码器网络
+* mysql_process.py  操作数据库代码，包括自动更新app的数据库和神经网络的数据库
+* predict.py  使用神经网络预测数据
+* train.py  训练每一个地点的自动编码器
+* Process.py  进度条模型
+* result.csv  武汉地点数据，此处三条为示例，[完整版](https://github.com/anner-wang/Easy-to-travel/blob/master/create_data/result.csv)  此文件直接决定系统的数据大小
+* test_bactch.sh  批量预测脚本
+* train_batch.sh  批量训练脚本
+* update.sh  app对应的数据库数据定时更新脚本
+
 ## 如何使用
 
 首先创建对应的数据库结构
@@ -56,4 +68,10 @@ sh test_bacth.py
 ```
 
 开始预测，输出数据对比（截图来源），同时保存到数据库，作为后面的训练数据
+
+```
+sh update.sh
+```
+
+app数据五分钟更新最新数据，每天开启一次，放入逻辑脚本即可
 
