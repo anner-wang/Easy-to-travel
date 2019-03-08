@@ -30,6 +30,7 @@ import com.alibaba.fastjson.JSONObject;
  * */
 @Service
 public class UserService {
+    //用户信息表名
     public static final String usertablename="user_info";
 
     @Autowired
@@ -68,6 +69,7 @@ public class UserService {
         User user=get(account);
         if(user!=null) {
             //已经存在该账号
+            user = new User();
             user.type=User.SIGNUP_alreadyHasThisUser;
             return user;
         }else {
@@ -83,7 +85,12 @@ public class UserService {
      */
     public User update(String account,String password,String type,String value) throws Exception {
         if(get(account,password)!=null){
-            jdbcTemplate.update("update "+usertablename+" set "+type+" = ? where account = ?", value,account);
+            if(type.equals("name")||type.equals("carLicense")||type.equals("carType")){
+                jdbcTemplate.update("update "+usertablename+" set "+type+" = '"+value+"' where account = ?",account);
+            }else{
+                jdbcTemplate.update("update "+usertablename+" set "+type+" = ? where account = ?", value,account);
+            }
+
             User user=get(account);
             user.type=User.TYPE_update;
             return user;
@@ -109,7 +116,7 @@ public class UserService {
      * 根据账号和密码查询用户信息
      */
     public User get(String account,String password) {
-        List<User> result = jdbcTemplate.query("select * from "+usertablename+" where account = ?,password=?",
+        List<User> result = jdbcTemplate.query("select * from "+usertablename+" where account=? and password=?",
                 new Object[] {account ,password}, new BeanPropertyRowMapper(User.class));
         if (result == null || result.isEmpty()) {
             return null;

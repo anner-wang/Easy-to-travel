@@ -45,6 +45,21 @@ public class UserController {
 	}
 
 	@ResponseBody
+	@RequestMapping("/get")
+	public User get(@RequestParam(value="account",required=true) String account,
+					@RequestParam(value="password",required=true) String password) {
+		User user;
+		user= userService.get(account,password);
+		if(user!=null){
+			user.type=User.TYPE_getUserInfor;
+		}else{
+			user=new User();
+			user.type=User.TYPE_wrong;
+		}
+		return user;
+	}
+
+	@ResponseBody
 	@RequestMapping("/signup")
 	public User signup(@RequestParam(value="account",required=true) String account,
 					  @RequestParam(value="password",required=true) String password,
@@ -69,31 +84,33 @@ public class UserController {
 	public User update(@RequestParam(value="account",required=true) String account,
 					  @RequestParam(value="password",required=true)String password ,
 					   @RequestParam(value="username",required=false)String username,
-					   @RequestParam(value="age",required=false)int age,
-					   @RequestParam(value="balance",required=false)double balance,
+					   @RequestParam(value="age",required=false)Integer age,
+					   @RequestParam(value="balance",required=false)Double balance,
 					   @RequestParam(value="carLicense",required=false)String carLicense,
 					   @RequestParam(value="carType",required=false)String carType,
-					   @RequestParam(value="driveDistance",required=false)int driveDistance,
-					   @RequestParam(value="customers",required=false)int customers,
-					   @RequestParam(value="userType",required=false)int userType
+					   @RequestParam(value="driveDistance",required=false)Integer driveDistance,
+					   @RequestParam(value="customers",required=false)Integer customers,
+					   @RequestParam(value="userType",required=false)Integer userType
 					   ) {
 		User user=userService.get(account,password);
+		user.type=User.TYPE_update;
 		if(user==null){
 			user = new User();
 			user.type=User.lOGIN_noUser;
 			return user;
 		}
 		try{
-			if(username!=null)userService.update(account,password,"username",username);
-			if(age!=0)userService.update(account,password,"age",age+"");
-			if(balance!=0)userService.update(account,password,"balance",balance+"");
+			if(username!=null)userService.update(account,password,"name",username);
 			if(carLicense!=null)userService.update(account,password,"carLicense",carLicense);
 			if(carType!=null)userService.update(account,password,"carType",carType);
-			if(driveDistance!=0)userService.update(account,password,"driveDistance",driveDistance+"");
-			if(customers!=0)userService.update(account,password,"customers",customers+"");
-			if(userType!=0)userService.update(account,password,"userType",userType+"");
+			if(age!=null)userService.update(account,password,"age",age+"");
+			if(balance!=null)userService.update(account,password,"balance",balance+"");
+			if(driveDistance!=null)userService.update(account,password,"driveDistance",driveDistance+"");
+			if(customers!=null)userService.update(account,password,"customers",customers+"");
+			if(userType!=null)userService.update(account,password,"userType",userType+"");
 		}catch (Exception e){
 			e.printStackTrace();
+			System.out.println("Wrong!");
 			user.type=User.TYPE_wrong;
 		}
 

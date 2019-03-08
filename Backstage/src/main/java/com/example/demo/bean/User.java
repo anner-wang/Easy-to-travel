@@ -24,7 +24,8 @@ public class User {
 
     public int type;        //操作类型
     private int userType;	//账户类型
-    private String userName;	//用户名字
+    private Long account;
+    private String name;	//用户名字
     private String passWord;
     private int age;			//年龄
     private double balance;			//余额
@@ -44,12 +45,23 @@ public class User {
     public void setUserType(int userType) {
         this.userType = userType;
     }
-    public String getUserName() {
-        return userName;
+
+    public Long getAccount() {
+        return account;
     }
-    public void setUserName(String userName) {
-        this.userName = userName;
+
+    public void setAccount(Long account) {
+        this.account = account;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getAge() {
         return age;
     }
