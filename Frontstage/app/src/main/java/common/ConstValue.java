@@ -10,7 +10,8 @@ public class ConstValue {
 
 	public static final int serverPortUser=3001;
 	public static final int noInternet=1111;
-	public static final String serverIp="http://www.anner.wang:54343/Demo/HelloWorld?";
+	//public static final String serverIp="http://www.anner.wang:54343/Demo/HelloWorld?";
+	public static final String serverIp="http://www.anner.wang:54343/user/";
 	public static final String spName="spName";
 	public static final String spAccount="spAccount";
 	public static final String spPwd="spPwd";
@@ -42,27 +43,27 @@ public class ConstValue {
 
 
 	public static String SAVEUSERPATH = Environment.getDataDirectory().getAbsolutePath()+ File.separator + "user.bin";
-	public static String getLoginURL(String account, String password, int type)
+	public static String getLoginURL(String account, String password)
 	{
-		return serverIp+"type="+type+"&account="+account+"&password="+password;
+		return serverIp+"login?"+"account="+account+"&password="+password;
 	}
     public static String getRegistURL(String account, String password)
     {
-        return serverIp+"type="+UserMessage.TYPE_signup+"&account="+account+"&password="+password;
+        return serverIp+"signup?"+"account="+account+"&password="+password;
     }
 	public static String setUserTypeURL(String account, String password, int userType)
 	{
-		return serverIp+"type="+UserMessage.TYPE_update+"&account="+account+"&password="+password+"&userType="+userType;
+		return serverIp+"update?"+"account="+account+"&password="+password+"&userType="+userType;
 	}
 	public static String setDriverInfoURL(String account,String pwd,String carLicense,String carType,String name,int age)
 	{
-		return serverIp+"type="+UserMessage.TYPE_update+"&account="+account+"&password="+pwd+"&carLicense="+carLicense+"&carType="+carType+"&name="+name+"&age="+age;
+		return serverIp+"update?"+"account="+account+"&password="+pwd+"&carLicense="+carLicense+"&carType="+carType+"&username="+name+"&age="+age;
 	}
 	public static String getHotMapUrl(double longitude,double latitude){
 		return "http://www.anner.wang:34443/map/near?longitude="+longitude+"&latitude="+latitude+"&tdsourcetag=s_pctim_aiomsg";
 	}
 	public static String getUserInfoUrl(String account,String pwd){
-		return serverIp+"type="+UserMessage.TYPE_getUserInfor+"&account="+account+"&password="+pwd;
+		return serverIp+"get?"+"&account="+account+"&password="+pwd;
 	}
 	public static String getDriverRouteUrl(double longitude,double latitude){
 		return "http://www.anner.wang:34443/path/simple?longitude="+longitude+"&latitude="+latitude;

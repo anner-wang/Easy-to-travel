@@ -18,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -160,7 +161,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void tryLogin(String account,String pwd){
-        String address=ConstValue.getLoginURL(account,pwd,UserMessage.TYPE_login);
+        String address=ConstValue.getLoginURL(account,pwd);
+        Log.e("GGG",address);
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -171,7 +173,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
-                System.out.println(responseText);
+                Log.e("GGG",responseText);
                 UserMessage user = new Gson().fromJson(responseText,UserMessage.class);
                 Message msg = new Message();
                 Bundle bundle = new Bundle();

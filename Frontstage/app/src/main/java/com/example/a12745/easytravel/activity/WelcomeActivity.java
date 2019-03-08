@@ -70,7 +70,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
     public void tryLogin(String account,String pwd){
-        String address=ConstValue.getLoginURL(account,pwd,UserMessage.TYPE_login);
+        String address=ConstValue.getLoginURL(account,pwd);
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

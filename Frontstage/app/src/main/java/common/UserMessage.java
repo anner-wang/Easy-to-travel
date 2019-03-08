@@ -30,7 +30,7 @@ public class UserMessage implements Serializable {
 	public int type=TYPE_wrong;        //操作类型
 	private int userType = USERTYPE_unkonw;	//账户类型
 	private String account = "null";	//账号
-	private String userName;	//用户名字
+	private String name;	//用户名字
 	private String password = "null";	//用户密码
 	private int age;			//年龄
 	private double balance;			//余额
@@ -53,12 +53,12 @@ public class UserMessage implements Serializable {
 
 
 	//更新司机信息时调用
-	public UserMessage(int type, String account, String userName, String password, int age, String carLicense,
-			String carType) {
+	public UserMessage(int type, String account, String name, String password, int age, String carLicense,
+					   String carType) {
 		super();
 		this.type = type;
 		this.account = account;
-		this.userName = userName;
+		this.name = name;
 		this.password = password;
 		this.age = age;
 		this.carLicense = carLicense;
@@ -66,11 +66,11 @@ public class UserMessage implements Serializable {
 	}
 	
 	//更新乘客信息时调用
-	public UserMessage(int type, String account, String userName, String password, int age) {
+	public UserMessage(int type, String account, String name, String password, int age) {
 		super();
 		this.type = type;
 		this.account = account;
-		this.userName = userName;
+		this.name = name;
 		this.password = password;
 		this.age = age;
 	}
@@ -96,13 +96,13 @@ public class UserMessage implements Serializable {
 	}
 
 
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 

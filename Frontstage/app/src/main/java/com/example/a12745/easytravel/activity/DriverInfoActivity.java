@@ -3,19 +3,13 @@ package com.example.a12745.easytravel.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -106,7 +100,7 @@ public class DriverInfoActivity extends AppCompatActivity {
                 case UserMessage.TYPE_getUserInfor:
                     user = (UserMessage) msg.getData().getSerializable(ConstValue.bundle_messageUser);
                     Log.e("TAG", user.getAccount()+""+user.getPassword());
-                    tv_name.setText(user.getUserName());
+                    tv_name.setText(user.getName());
                     closeProgressDialog();
                     break;
                 case UserMessage.TYPE_wrong:
