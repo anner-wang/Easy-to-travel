@@ -5,13 +5,9 @@ if not os.path.exists('data'):
     os.mkdir('data')
     os.mkdir('data/train_data')
     os.mkdir('data/test_data')
-with open('csv/result.csv','r') as file:
+with open('result.csv','r') as file:
     reader=csv.reader(file)
-    start_flag=True
     for line in reader:
-        if start_flag:
-            start_flag=False
-            continue
         longitude=line[1]
         latitude=line[2]
         data=[random.randint(5,20) for r in range(288) ]

@@ -5,6 +5,7 @@ import argparse
 import os
 import sklearn.preprocessing as prep
 from autoencoder import AddittiveGaussianNoiseAutoencoder
+from mysql_process import Database
 
 # 预处理数据
 def standard_scale(X_train,X_test):
@@ -25,16 +26,15 @@ if __name__ == '__main__':
     args=parser.parse_args()
     filename=args.location
     overwrite=args.overwrite
-
-
+    db=Database()
+    if not os.path.exists('weights'):
+        os.mkdir('weights')
     if not overwrite and os.path.exists('weights/'+filename):
         print('pass')
     else:
-        # 加载自己的数据集到内存
-        X_train = None
-        with open('data/train_data/' + filename + '.csv', 'r') as file:
-            reader = csv.reader(file)
-            X_train = np.array(list(reader))
+        # 从数据库加载训练数据到内存
+        data = db.get_location_all_data(filename)
+        X_train = np.array(data)
         # 初始化训练必须参数
         n_samples = int(X_train.shape[0])
         training_epoch = 50

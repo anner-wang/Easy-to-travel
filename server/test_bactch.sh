@@ -5,7 +5,7 @@ do
     then
         filename=${file##*/}
         location=${filename%.*}
-        echo 开始训练地点:$location
-        python train.py --location $location 
+        echo 开始预测地点:$location
+        python predict.py --location $location 
     fi
 done
