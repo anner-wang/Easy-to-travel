@@ -52,7 +52,7 @@
 database : wuhan
 
 ```
-python mysql_process.py 
+python mysql_process.py --csv2table y
 ```
 
 开始将data中的csv文件存储在数据库中（时间很长......），这些都是系统的初始化,进入wuhan后，开始自己创建表
