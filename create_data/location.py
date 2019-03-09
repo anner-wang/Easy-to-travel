@@ -22,11 +22,11 @@ def run(location):
 if __name__ == '__main__':
 
     parser=argparse.ArgumentParser()
-    # 添加参数
+
     parser.add_argument('--ak',required=False,default='AXclZFCYBqfM8nBDloQ3uGQFr54MV9Q4',help=' 百度地图AK')
     parser.add_argument('--city',required=False,default='武汉',help='目标城市')
     args=parser.parse_args()
-    # 基础的url和参数配置
+
     ak=args.ak
     city=args.city
     url='http://api.map.baidu.com/place/v2/search'
