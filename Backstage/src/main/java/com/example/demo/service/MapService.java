@@ -31,9 +31,6 @@ public class MapService {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	@Autowired
-	private RestTemplate restTemplate;
-	
 	private final static Logger logger=LoggerFactory.getLogger(MapService.class);
 	
 	//展示全部信息
@@ -105,56 +102,4 @@ public class MapService {
 			String sql="delete from map where 1=1";
 			jdbcTemplate.update(sql);
 		}
-		//添加虚假数据
-		public void addInfo(){
-			int predictNumber=15;
-			int index=0;
-			
-			
-		/*
-		 * String []location=
-		 * {"大学","光谷","医院","景点","购物中心","地铁","高架桥","路口","公交车站","酒吧","光谷","楚河大道"
-		 * ,"软件园","超市","影院","东湖绿道","雄楚大道","南湖","湖北工业大学","武汉科技大学","石牌岭","丁字桥","珞狮路","书城路"
-		 * ,"黄鹤楼","户部巷","汉口","火车站","公司","武汉理工大学余家头校区","友谊大道","联盟小区",
-		 * "和平大道","岳家嘴","铁机路","华城广场","群星城","武汉大学","湖北大学","肖品茂","欢乐谷","公园","武汉理工大学南湖校区",
-		 * "升升公寓"};
-		 */
-			String []location= {"南湖","湖北工业大学","武汉科技大学","石牌岭","丁字桥","珞狮路","书城路","武汉理工大学南湖校区","升升公寓"};	
-			String url="http://api.map.baidu.com/place/v2/suggestion?query=学校&region=武汉&city_limit=true&output=json&ak=AXclZFCYBqfM8nBDloQ3uGQFr54MV9Q4";
-			ResponseEntity<String>results=restTemplate.exchange(url, HttpMethod.GET,null,String.class);
-			String json=results.getBody();
-			JSONObject jsonObj=JSON.parseObject(json);
-			JSONArray results1=jsonObj.getJSONArray("result");
-			for(int i=0;i<100;i++) {
-				url="http://api.map.baidu.com/place/v2/suggestion?query="+location[new Random().nextInt(9)]+"&region=武汉&city_limit=true&output=json&ak=AXclZFCYBqfM8nBDloQ3uGQFr54MV9Q4";
-				results=restTemplate.exchange(url, HttpMethod.GET,null,String.class);
-				json=results.getBody();
-				jsonObj=JSON.parseObject(json);
-				results1=jsonObj.getJSONArray("result");
-					//JSONObject o=(JSONObject) results1.get(0);
-					logger.info("返回的城市"+location[i]+"预测热点信息如下:");
-					for(int j=1;j<results1.size();j++) {
-						JSONObject temp1=(JSONObject)results1.get(j);
-						JSONObject temp2=(JSONObject)temp1.getJSONObject("location");
-						double longitude=Double.parseDouble(temp2.getString("lng"));
-						double latitude=Double.parseDouble(temp2.getString("lat"));
-						int number=predictNumber+new Random().nextInt(100);
-						insertInfo(new Map(longitude,latitude,number));
-						logger.info(temp1.getString("name")+"\t经度:"+temp2.getString("lng")+"\t纬度:"+temp2.getString("lat")+"\t 预测值:"+number);
-						index++;
-					}
-				}
-			
-			logger.info("数据更新完成,更新:"+index+"条数据");
-		}
-	
-	//定时更新数据库map信息
-		@Scheduled(initialDelay=3000,fixedRate=10000)
-		public void updateDatabase() {		
-			logger.info(System.currentTimeMillis()+"开始预测城市热点信息"); 
-			//deleteAllInfo(); 
-			update();
-			//addInfo();
-			logger.info(System.currentTimeMillis()+"热点数据更新成功");
-	}
 }

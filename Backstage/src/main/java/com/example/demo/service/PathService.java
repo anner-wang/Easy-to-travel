@@ -101,7 +101,7 @@ public class PathService {
 				 */
 				maps4.add(nextMap);
 			}
-			near.remove(0);
+			distanceNear.remove(0);
 		}
 
 		//3.每一组里面在不改变相对顺序的情况下挑出最大的四个点
