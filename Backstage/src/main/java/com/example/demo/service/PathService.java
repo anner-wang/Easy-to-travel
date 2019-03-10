@@ -41,9 +41,9 @@ public class PathService {
 				if(getDistance(startPoint,point)<getDistance(startPoint,near.get(minindex))){
 					minindex=near.indexOf(point);
 				}
-				distanceNear.add(near.get(minindex));
-				near.remove(minindex);
 			}
+			distanceNear.add(near.get(minindex));
+			near.remove(minindex);
 
 		}
 
@@ -59,8 +59,8 @@ public class PathService {
 
 
 		//2.将排序好的Map点根据象限的不同分为四组
-		while(near.size()>0) {
-			Map nextMap=near.get(0);
+		while(distanceNear.size()>0) {
+			Map nextMap=distanceNear.get(0);
 			double longitude=nextMap.getLongitude();
 			double latitude=nextMap.getLatitude();
 			double longitude_difference=longitude-startPoint.getLongitude();
@@ -168,20 +168,20 @@ public class PathService {
 		int no4,no3,no2,no1; //no4为最小的Map点的下标，no1为最大的Map点的下标
 		no4=no3=no2=no1=0;
 		for(int i=1;i<mapList.size();i++ ){
-			if(mapList.get(i).getPredictNumber()>mapList.get(no4).getPredictNumber()){
+			if(mapList.get(i).getPredictNumber()>mapList.get(no1).getPredictNumber()){
+				no4=no3;
+				no3=no2;
+				no2=no1;
+				no1=i;
+			}else if(mapList.get(i).getPredictNumber()>mapList.get(no2).getPredictNumber()){
+				no4=no3;
+				no3=no2;
+				no2=i;
+			}else if(mapList.get(i).getPredictNumber()>mapList.get(no3).getPredictNumber()){
+				no4=no3;
+				no3=i;
+			}else if(mapList.get(i).getPredictNumber()>mapList.get(no4).getPredictNumber()){
 				no4=i;
-				if(mapList.get(i).getPredictNumber()>mapList.get(no3).getPredictNumber()){
-					no4=no3;
-					no3=i;
-					if(mapList.get(i).getPredictNumber()>mapList.get(no2).getPredictNumber()){
-						no3=no2;
-						no2=i;
-						if(mapList.get(i).getPredictNumber()>mapList.get(no1).getPredictNumber()){
-							no2=no1;
-							no1=i;
-						}
-					}
-				}
 			}
 		}
 		pointList.add(new Point(mapList.get(no4).getLongitude(),mapList.get(no4).getLatitude()));
