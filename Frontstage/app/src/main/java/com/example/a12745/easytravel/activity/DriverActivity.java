@@ -63,6 +63,7 @@ import com.amap.api.services.weather.WeatherSearch;
 import com.amap.api.services.weather.WeatherSearchQuery;
 import com.amap.api.services.weather.LocalWeatherLive;
 import com.example.a12745.easytravel.R;
+import com.example.a12745.easytravel.navi.MainActivity;
 import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
@@ -81,6 +82,7 @@ import Util.DrivingRouteOverlay;
 import Util.HttpUtil;
 import common.ConstValue;
 import common.HotPoint;
+import fragment.ConfirmFragment;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -92,6 +94,7 @@ import okhttp3.Response;
  */
 public class DriverActivity extends AppCompatActivity implements AMapLocationListener,LocationSource,INaviInfoCallback,PoiSearch.OnPoiSearchListener,RouteSearch.OnRouteSearchListener,WeatherSearch.OnWeatherSearchListener {
 
+    public static boolean isShowConfirmFragment = false;
     private MapView mapView;
     private OnLocationChangedListener mLocationListener;
     private AMapLocationClient mLocationClient;
@@ -184,8 +187,7 @@ public class DriverActivity extends AppCompatActivity implements AMapLocationLis
                     tryGetDriverRoute(curentLatitude,curentLongitude);
                     colorNumber=0;
                 }else if(hasChoseRoute>0){
-                    Poi start = new Poi("起点", new LatLng(curentLatitude,curentLongitude), "");
-                    /**终点传入的是北京站坐标,但是POI的ID "B000A83M61"对应的是北京西站，所以实际算路以北京西站作为终点**/
+                    /*Poi start = new Poi("起点", new LatLng(curentLatitude,curentLongitude), "");
                     List<Poi> wayListP = new ArrayList();//途径点目前最多支持3个。
                     int i;
                     for(i=hasChoseRoute-3;i<hasChoseRoute;i++){
@@ -193,7 +195,24 @@ public class DriverActivity extends AppCompatActivity implements AMapLocationLis
                     }
                     Poi end = new Poi("终点", new LatLng(wayList.get(i).getLatitude(),wayList.get(i).getLongitude()), "");
                     //第一个沿途点需要最后添加
-                    AmapNaviPage.getInstance().showRouteActivity(DriverActivity.this, new AmapNaviParams(start, wayListP, end, AmapNaviType.DRIVER),DriverActivity.this);
+                    AmapNaviPage.getInstance().showRouteActivity(DriverActivity.this, new AmapNaviParams(start, wayListP, end, AmapNaviType.DRIVER),DriverActivity.this);*/
+                    ArrayList<String> start = new ArrayList<String>();
+                    ArrayList<String> wayListP = new ArrayList<String>();
+                    ArrayList<String> end = new ArrayList<String>();
+                    start.add(String.valueOf(curentLatitude));
+                    start.add(String.valueOf(curentLongitude));
+                    int i;
+                    for(i=hasChoseRoute-3;i<hasChoseRoute;i++){
+                        wayListP.add(String.valueOf(wayList.get(i).getLatitude()));
+                        wayListP.add(String.valueOf(wayList.get(i).getLongitude()));
+                    }
+                    end.add(String.valueOf(wayList.get(i).getLatitude()));
+                    end.add(String.valueOf(wayList.get(i).getLongitude()));
+                    Intent intent = new Intent(DriverActivity.this, MainActivity.class);
+                    intent.putStringArrayListExtra("start",start);
+                    intent.putStringArrayListExtra("wayListP",wayListP);
+                    intent.putStringArrayListExtra("end",end);
+                    startActivity(intent);
                 }else{
                     Toast.makeText(DriverActivity.this, "请选择终点", Toast.LENGTH_SHORT).show();
                 }
@@ -229,6 +248,12 @@ public class DriverActivity extends AppCompatActivity implements AMapLocationLis
             timer.schedule( timerTask,ConstValue.time_refreshHotMap, ConstValue.time_refreshHotMap);
         }
         Log.e("GGG","定时器启动");
+        if (isShowConfirmFragment)
+        {
+            isShowConfirmFragment = false;
+            ConfirmFragment confirmFragment = new ConfirmFragment();
+            confirmFragment.show(getFragmentManager(),null);
+        }
         super.onStart();
     }
 

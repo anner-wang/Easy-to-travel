@@ -11,7 +11,7 @@ public class ConstValue {
 	public static final int serverPortUser=3001;
 	public static final int noInternet=1111;
 	//public static final String serverIp="http://www.anner.wang:54343/Demo/HelloWorld?";
-	public static final String serverIp="http://www.anner.wang:54343/user/";
+	public static final String serverIp="http://www.anner.wang:34443/user/";
 	public static final String spName="spName";
 	public static final String spAccount="spAccount";
 	public static final String spPwd="spPwd";

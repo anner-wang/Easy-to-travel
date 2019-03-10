@@ -173,7 +173,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
-                Log.e("GGG",responseText);
+                Log.e("GGG账号",responseText);
                 UserMessage user = new Gson().fromJson(responseText,UserMessage.class);
                 Message msg = new Message();
                 Bundle bundle = new Bundle();

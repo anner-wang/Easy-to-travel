@@ -5,7 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="black_overlay">#66000000</color>
-
+    <color name="colorBlue">#307EFE</color>
 
     <color name="drive_route_1">#94e6ff00</color>
     <color name="drive_route_2">#940dff00</color>
