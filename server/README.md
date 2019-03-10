@@ -1,10 +1,5 @@
 # 单服务器部署思路
 
-[data文件夹下载](https://pan.baidu.com/s/1-5VD3EqQj304dAw3GwIdng )
-提取码：u4v4 
-
-下载后放入目录，即可开始运行脚本批量训练和预测（注意数据库搭建）
-
 ## 服务器结构
 
 ### 数据库结构
@@ -52,7 +47,7 @@
 database : wuhan
 
 ```
-python mysql_process.py 
+python mysql_process.py --csv2table y
 ```
 
 开始将data中的csv文件存储在数据库中（时间很长......），这些都是系统的初始化,进入wuhan后，开始自己创建表
