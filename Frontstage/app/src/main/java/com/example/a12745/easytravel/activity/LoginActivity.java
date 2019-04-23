@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -28,7 +29,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a12745.easytravel.R;
+import com.example.a12745.easytravel.navi.MainActivity;
 import com.google.gson.Gson;
+import com.yw.game.floatmenu.FloatItem;
+import com.yw.game.floatmenu.FloatLogoMenu;
+import com.yw.game.floatmenu.FloatMenuView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,6 +62,8 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private TextView textForgetPassword,textRegister;
     private final int mRequestCode = 100;//权限请求码
+
+    private FloatLogoMenu mFloatMenu;
 
 
     @Override
@@ -94,6 +101,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         showGPSContacts();
+
 
     }
 

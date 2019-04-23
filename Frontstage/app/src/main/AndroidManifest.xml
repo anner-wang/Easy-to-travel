@@ -31,6 +31,9 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <!--悬浮窗权限-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
 
     <application
         android:allowBackup="true"
@@ -48,7 +51,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.DriverActivity" />
+        <activity android:name=".activity.DriverActivity" >
+
+        </activity>
         <activity android:name=".activity.DriverInfoActivity" />
         <activity android:name=".activity.PassengerInfoActivity" />
         <activity android:name=".activity.DriverInfoMoreActivity" />

@@ -1,7 +1,9 @@
 package com.example.a12745.easytravel.activity;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
@@ -65,6 +67,9 @@ import com.amap.api.services.weather.LocalWeatherLive;
 import com.example.a12745.easytravel.R;
 import com.example.a12745.easytravel.navi.MainActivity;
 import com.google.gson.JsonArray;
+import com.yw.game.floatmenu.FloatItem;
+
+import com.yw.game.floatmenu.FloatMenuView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -79,6 +84,7 @@ import java.util.TimerTask;
 
 import Util.ActivityCollector;
 import Util.DrivingRouteOverlay;
+import Util.FloatLogoMenu;
 import Util.HttpUtil;
 import common.ConstValue;
 import common.HotPoint;
@@ -117,10 +123,7 @@ public class DriverActivity extends AppCompatActivity implements AMapLocationLis
     private TextView weather_cityName,weather_temp,weather_now;
     private  Timer timer;
     private TimerTask timerTask;
-
-
-
-
+    private FloatLogoMenu mFloatMenu;
 
 
     @Override
@@ -230,6 +233,35 @@ public class DriverActivity extends AppCompatActivity implements AMapLocationLis
 
 
 
+        List<FloatItem>floatItemList=new ArrayList<>();
+        floatItemList.add(new FloatItem("",R.color.colorAccent,R.color.colorTrancent, BitmapFactory.decodeResource(getResources(),R.drawable.gaode)));
+        floatItemList.add(new FloatItem("",R.color.colorAccent,R.color.colorTrancent,BitmapFactory.decodeResource(getResources(),R.drawable.amap_car)));
+        mFloatMenu = new FloatLogoMenu.Builder()
+                .withContext(this.getApplication())//这个在7.0（包括7.0）以上以及大部分7.0以下的国产手机上需要用户授权，需要搭配<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+                .logo(BitmapFactory.decodeResource(getResources(),R.drawable.gaode))
+                .drawCicleMenuBg(true)
+                .backMenuColor(R.color.colorTrancent)
+                .setBgDrawable(this.getResources().getDrawable(R.drawable.btn_float))
+                //这个背景色需要和logo的背景色一致
+                .setFloatItems(floatItemList)
+                .defaultLocation(FloatLogoMenu.RIGHT)
+                .drawRedPointNum(false)
+                .showWithListener(new FloatMenuView.OnMenuClickListener() {
+                    @Override
+                    public void onItemClick(int position, String title) {
+                        //Toast.makeText(LoginActivity.this, "position " + position + " title:" + title + " is clicked.", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void dismiss() {
+
+                    }
+                });
+
+    }
+
+    private void initFloatBall(){
+
     }
 
     @Override
@@ -308,7 +340,7 @@ public class DriverActivity extends AppCompatActivity implements AMapLocationLis
                 curentLongitude=aMapLocation.getLongitude();
             } else {
                 String errText = "定位失败," + aMapLocation.getErrorCode() + ": " + aMapLocation.getErrorInfo();
-                Toast.makeText(this, "定位失败，请看后台Log.e", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "定位失败，请看后台Log.e", Toast.LENGTH_LONG).show();
                 Log.e("GGG",errText);
             }
         }

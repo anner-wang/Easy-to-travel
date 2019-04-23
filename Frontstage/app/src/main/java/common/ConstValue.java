@@ -36,6 +36,7 @@ public class ConstValue {
             Manifest.permission.CHANGE_NETWORK_STATE,
             Manifest.permission.CHANGE_WIFI_STATE,
             Manifest.permission.INTERNET,
+			Manifest.permission.SYSTEM_ALERT_WINDOW
 
 	};
 
