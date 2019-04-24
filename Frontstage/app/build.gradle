@@ -48,5 +48,6 @@ dependencies {
     implementation files('libs/java-json.jar')
     implementation files('libs/AMap3DMap_6.6.0_AMapNavi_6.5.0_AMapSearch_6.5.0_AMapTrack_1.0.0_AMapLocation_4.4.0_20181221')
     implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.yw.game.floatmenu:FloatMenu:2.0.1'
 
 }
