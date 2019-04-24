@@ -51,22 +51,29 @@ public class WelcomeActivity extends AppCompatActivity {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-               String account=getSharedPreferences(ConstValue.spName,MODE_PRIVATE).getString(ConstValue.spAccount,"");
-               String pwd=getSharedPreferences(ConstValue.spName,MODE_PRIVATE).getString(ConstValue.spPwd,"");
-               if(!account.equals("")&&!pwd.equals("")){
-                   tryLogin(account,pwd);
-               }else{
-                   //为保存账号密码，跳转登入界面
-                   Intent intent = new Intent(WelcomeActivity.this,LoginActivity.class);
-                   startActivity(intent);
-                   finish();
-               }
+
+                /*Intent intent = new Intent(WelcomeActivity.this, DriverActivity.class);
+                startActivity(intent);
+                finish();*/
+
+                String account = getSharedPreferences(ConstValue.spName, MODE_PRIVATE).getString(ConstValue.spAccount, "");
+                String pwd = getSharedPreferences(ConstValue.spName, MODE_PRIVATE).getString(ConstValue.spPwd, "");
+
+
+                if (!account.equals("") && !pwd.equals("")) {
+                    tryLogin(account, pwd);
+                } else {
+                    //为保存账号密码，跳转登入界面
+                    Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         };
         //使用timer.schedule（）方法调用timerTask，定时3秒后执行run
         timer.schedule(timerTask, 1500);
 
-        }
+    }
 
 
     public void tryLogin(String account,String pwd){

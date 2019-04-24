@@ -348,6 +348,7 @@
                 android:layout_height="2dp"
                 android:background="#454545"
                 ></LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

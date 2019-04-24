@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d8e0e8">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"
+        >
+        <Button
+            android:id="@+id/service_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_arrow_back_black_24dp"
+            android:layout_marginLeft="15dp"
+            />
+        <TextView
+            android:text="客服中心"
+            android:textSize="23dp"
+            android:textColor="#fff"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/msg_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:background="@drawable/bg_cursor"
+            android:id="@+id/input_text"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:layout_weight="1"
+            android:maxLines="1" />
+        <Button
+            android:textColor="#ffffff"
+            android:background="@drawable/bg_button"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="发送"
+            />
+        <TextView
+            android:layout_width="3dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

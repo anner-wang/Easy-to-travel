@@ -33,7 +33,7 @@ public class DriverInfoActivity extends AppCompatActivity {
     private Button btnBack,btnlogout;
     private UserMessage user;
     private ProgressDialog progressDialog;
-    private TextView tv_name,tv_account;
+    private TextView tv_name,tv_account,contact_to_service;
     private long firstTime;//再按一次退出程序
 
 
@@ -80,6 +80,14 @@ public class DriverInfoActivity extends AppCompatActivity {
         tv_name=findViewById(R.id.driver_self_name);
         tv_account=findViewById(R.id.driver_self_account);
         tv_account.setText(getSharedPreferences(ConstValue.spName,MODE_PRIVATE).getString(ConstValue.spAccount,""));
+        contact_to_service = findViewById(R.id.contact_to_service);
+        contact_to_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DriverInfoActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
         getUser();
     }
 
